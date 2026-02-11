@@ -123,14 +123,3 @@ class StatementWrapper {
 
 // Create mysqli-compatible connection
 $conn = new MySQLiWrapper($conn);
-
-// Helper function for mysqli_connect_errno()
-function mysqli_connect_errno() {
-    global $conn;
-    return $conn->connect_errno;
-}
-
-// Helper function for mysqli_close()
-function mysqli_close($connection) {
-    return $connection->close();
-}
