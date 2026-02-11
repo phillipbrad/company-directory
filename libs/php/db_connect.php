@@ -95,9 +95,9 @@ class StatementWrapper {
         $this->stmt = $stmt;
     }
     
-    public function bind_param($types, &...$vars) {
+    public function bind_param($types, ...$vars) {
         foreach ($vars as $i => $var) {
-            $this->stmt->bindParam($i + 1, $var);
+            $this->stmt->bindValue($i + 1, $var);
         }
         return true;
     }
