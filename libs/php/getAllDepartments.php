@@ -25,10 +25,10 @@ if ($conn->connect_errno) {
 
 $query = 'SELECT 
   d.id, 
-  d.name AS departmentName, 
-  l.name AS locationName 
+  d.name AS "departmentName", 
+  l.name AS "locationName" 
 FROM department d
-LEFT JOIN location l ON d.locationID = l.id
+LEFT JOIN location l ON d."locationID" = l.id
 ORDER BY d.name, l.name
 ';
 
