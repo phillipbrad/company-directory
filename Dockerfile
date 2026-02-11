@@ -1,8 +1,10 @@
 # Use official PHP with Apache
 FROM php:8.1-apache
 
-# Install MySQL extension
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Install PostgreSQL and MySQL extensions
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql pdo_mysql mysqli \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite

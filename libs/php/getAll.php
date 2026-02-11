@@ -3,14 +3,10 @@
 // Start execution timer to measure script performance
 $executionStartTime = microtime(true);
 
-// Include database configuration file 
-include("config.php");
-
+// Include database connection with mysqli compatibility
+include("db_connect.php");
 
 header('Content-Type: application/json; charset=UTF-8');
-
-// Create a new MySQLi connection using values from config.php
-$conn = new mysqli($cd_host, $cd_user, $cd_password, $cd_dbname, $cd_port, $cd_socket);
 
 // Check if the database connection failed
 if (mysqli_connect_errno()) {
