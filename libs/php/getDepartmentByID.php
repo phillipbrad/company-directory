@@ -23,7 +23,7 @@ if ($conn->connect_errno) {
 }
 
 
-$query = $conn->prepare('SELECT id, name, locationID FROM department WHERE id =  ?');
+$query = $conn->prepare('SELECT id, name, locationid AS "locationID" FROM department WHERE id = ?');
 
 $query->bind_param("i", $_GET['id']);
 
