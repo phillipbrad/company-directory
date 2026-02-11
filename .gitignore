@@ -1,0 +1,2 @@
+# Config file is now safe to commit (uses environment variables)
+# /libs/php/config.php
