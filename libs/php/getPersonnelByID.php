@@ -24,7 +24,7 @@ if ($conn->connect_errno) {
 }
 
 
-$query = $conn->prepare('SELECT "id", "firstName", "lastName", "email", "jobTitle", "departmentID" FROM personnel WHERE "id" = ?');
+$query = $conn->prepare('SELECT id, "firstName", "lastName", email, "jobTitle", "departmentID" FROM personnel WHERE id = ?');
 
 $query->bind_param("i", $_POST['id']);
 
