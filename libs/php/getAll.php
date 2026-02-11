@@ -9,7 +9,7 @@ include("db_connect.php");
 header('Content-Type: application/json; charset=UTF-8');
 
 // Check if the database connection failed
-if (mysqli_connect_errno()) {
+if ($conn->connect_errno) {
 
     // Prepare an error response
     $output['status']['code'] = "300"; // Error code for database failure

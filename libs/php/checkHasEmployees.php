@@ -21,7 +21,7 @@ $id = $_POST['id'];
 $type = $_POST['type'];
 
 
-if (mysqli_connect_errno()) {
+if ($conn->connect_errno) {
   $output['status']['code'] = "300";
   $output['status']['name'] = "failure";
   $output['status']['description'] = "database unavailable";
