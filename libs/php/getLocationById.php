@@ -15,7 +15,7 @@ if ($conn->connect_errno) {
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 	$output['data'] = [];
 
-	mysqli_close($conn);
+	$conn->close();
 
 	echo json_encode($output);
 
@@ -37,7 +37,7 @@ if (false === $query) {
 
 	echo json_encode($output);
 
-	mysqli_close($conn);
+	$conn->close();
 	exit;
 }
 
@@ -45,7 +45,7 @@ $result = $query->get_result();
 
 $data = [];
 
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $result->fetch_assoc()) {
 
 	array_push($data, $row);
 }
@@ -58,4 +58,4 @@ $output['data'] = $data;
 
 echo json_encode($output);
 
-mysqli_close($conn);
+$conn->close();

@@ -19,7 +19,7 @@ if ($conn->connect_errno) {
     $output['data'] = [];
 
     // Close database connection
-    mysqli_close($conn);
+    $conn->close();
 
     // Return JSON response and stop 
     echo json_encode($output);
@@ -42,7 +42,7 @@ if (!$result) {
     $output['data'] = [];
 
     // Close database connection
-    mysqli_close($conn);
+    $conn->close();
 
     // Return JSON response and stop script execution
     echo json_encode($output);
@@ -53,7 +53,7 @@ if (!$result) {
 $data = [];
 
 // Fetch each row from the query result and add it to the array
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $result->fetch_assoc()) {
     array_push($data, $row);
 }
 
@@ -65,7 +65,7 @@ $output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000
 $output['data'] = $data;
 
 // Close database connection
-mysqli_close($conn);
+$conn->close();
 
 // Return JSON response to the client
 echo json_encode($output);

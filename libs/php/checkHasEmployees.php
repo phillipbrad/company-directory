@@ -27,7 +27,7 @@ if ($conn->connect_errno) {
   $output['status']['description'] = "database unavailable";
   $output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
   $output['data'] = [];
-  mysqli_close($conn);
+  $conn->close();
   echo json_encode($output);
   exit;
 }
@@ -76,4 +76,4 @@ $output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000
 $output['data'] = $data;
 
 echo json_encode($output);
-mysqli_close($conn);
+$conn->close();

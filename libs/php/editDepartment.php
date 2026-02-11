@@ -15,7 +15,7 @@ if ($conn->connect_errno) {
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 	$output['data'] = [];
 
-	mysqli_close($conn);
+	$conn->close();
 
 	echo json_encode($output);
 
@@ -48,7 +48,7 @@ if (false === $query) {
 	$output['status']['description'] = "query failed";
 	$output['data'] = [];
 
-	mysqli_close($conn);
+	$conn->close();
 
 	echo json_encode($output);
 
@@ -61,6 +61,6 @@ $output['status']['description'] = "success";
 $output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 $output['data'] = [];
 
-mysqli_close($conn);
+$conn->close();
 
 echo json_encode($output);

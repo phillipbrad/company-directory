@@ -16,7 +16,7 @@ if ($conn->connect_errno) {
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 	$output['data'] = [];
 
-	mysqli_close($conn);
+	$conn->close();
 
 	echo json_encode($output);
 
@@ -37,7 +37,7 @@ if (false === $query) {
 	$output['status']['description'] = "query failed";
 	$output['data'] = [];
 
-	mysqli_close($conn);
+	$conn->close();
 
 	echo json_encode($output);
 
@@ -48,7 +48,7 @@ $result = $query->get_result();
 
 $personnel = [];
 
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $result->fetch_assoc()) {
 
 	array_push($personnel, $row);
 }
@@ -64,7 +64,7 @@ if (!$result) {
 	$output['status']['description'] = "query failed";
 	$output['data'] = [];
 
-	mysqli_close($conn);
+	$conn->close();
 
 	echo json_encode($output);
 
@@ -73,7 +73,7 @@ if (!$result) {
 
 $department = [];
 
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $result->fetch_assoc()) {
 
 	array_push($department, $row);
 }
@@ -85,6 +85,6 @@ $output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000
 $output['data']['personnel'] = $personnel;
 $output['data']['department'] = $department;
 
-mysqli_close($conn);
+$conn->close();
 
 echo json_encode($output);
