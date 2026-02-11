@@ -27,7 +27,7 @@ if ($conn->connect_errno) {
 }
 
 
-$query = 'SELECT p.id, p.lastname AS lastname, p.firstname AS firstname, p.jobtitle AS jobtitle, p.email, d.name AS "departmentName", l.name AS "locationName" FROM personnel p LEFT JOIN department d ON (d.id = p.departmentid) LEFT JOIN location l ON (l.id = d.locationid) ORDER BY p.lastname, p.firstname, d.name, l.name';
+$query = 'SELECT p.id, p.lastname AS "lastName", p.firstname AS "firstName", p.jobtitle AS "jobTitle", p.email, d.name AS "departmentName", l.name AS "locationName" FROM personnel p LEFT JOIN department d ON (d.id = p.departmentid) LEFT JOIN location l ON (l.id = d.locationid) ORDER BY p.lastname, p.firstname, d.name, l.name';
 
 // Execute the SQL query
 $result = $conn->query($query);
